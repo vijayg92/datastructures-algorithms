@@ -21,18 +21,10 @@ class LinkedList:
 
     def __init__(self):
         self.head = None
+        self.size = 0
 
     def get_list_size(self):
-        count = 0
-        current = self.head
-        if current is None:
-            raise ValueError("List is Empty")
-        else:
-            while current:
-                count += 1
-                current = current.get_data()
-            print('Size of the List is {}'.format(count))
-        return count
+        return self.size
 
     def display_list_items(self):
         current = self.head
@@ -44,6 +36,7 @@ class LinkedList:
         temp = Node(value)
         temp.set_reference(self.head)
         self.head = temp
+        self.size += 1
         print('Node item {} has been successfully added in beginning of the list'.format(value))
 
     def insert_node_at_end(self, value):
@@ -52,6 +45,7 @@ class LinkedList:
         while current.get_reference() is not None:
             current = current.get_reference()
         current.set_reference(temp)
+        self.size += 1
         print('Node item {} has successfully added to end of Linked List'.format(value))
 
     def search_item_in_list(self, value):
@@ -70,6 +64,9 @@ class LinkedList:
         previous = None
         found = False
 
+        if current is None:
+            print("List is Empty")
+
         while not found:
             if current.get_data() == value:
                 found = True
@@ -82,6 +79,7 @@ class LinkedList:
         else:
             previous.set_reference(current.get_reference())
 
+        self.size -= 1
 
 def main():
     mylist = LinkedList()

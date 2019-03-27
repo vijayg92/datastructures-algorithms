@@ -23,7 +23,7 @@ class LinkedList:
         self.head = None
         self.size = 0
 
-    def get_list_size(self):
+    def __len__(self):
         return self.size
 
     def display_list_items(self):
